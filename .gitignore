@@ -1,2 +1,2 @@
-/stderr.txt
-/stdout.txt
+inout/*
+!inout/stdin.txt
