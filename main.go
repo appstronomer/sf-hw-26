@@ -25,6 +25,7 @@ func loopStdin(chOut chan<- int) {
 			stderr.Printf("[ERR] loopStdin: ParseInt error: %v", err)
 			continue
 		}
+		stderr.Printf("[LOG] loopStdin: number parsed: %v", val)
 		chOut <- int(val)
 	}
 	if err := scanner.Err(); err != nil {
@@ -44,6 +45,7 @@ func loopFilterNegative(chIn <-chan int, chOut chan<- int) {
 			stderr.Printf("[FILTER] negative: %v", val)
 			continue
 		}
+		stderr.Printf("[PASS] not negative: %v", val)
 		chOut <- val
 	}
 }
@@ -54,6 +56,7 @@ func loopFilterMul(chIn <-chan int, chOut chan<- int) {
 			stderr.Printf("[FILTER] undividable: %v", val)
 			continue
 		}
+		stderr.Printf("[PASS] divisible by 3: %v", val)
 		chOut <- val
 	}
 }
